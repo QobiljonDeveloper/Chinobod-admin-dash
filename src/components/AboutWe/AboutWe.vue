@@ -86,8 +86,6 @@ export default defineComponent({
             { image: hotelRoom3 },
             { image: hotelRoom4 },
             { image: hotelRoom5 }
-
-
         ];
 
         return {

@@ -1,4 +1,5 @@
 {
+ "homepage": "https://QobiljonDeveloper.io/Chinobod-admin-dash",
   "name": "admin-chinobod",
   "version": "0.0.0",
   "private": true,
@@ -8,7 +9,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build"
   },
   "dependencies": {
     "axios": "^1.7.2",
@@ -25,6 +28,7 @@
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.4.4",

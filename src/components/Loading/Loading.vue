@@ -20,11 +20,10 @@
         'after:border-white': index >= activeStepIndex,
         'bg-image-2': index === 0,
         'bg-image-3': index === 1,
-        'bg-image-4': index === 2
       }">
         <span class="flex items-center justify-center w-5 h-5 rounded-full shrink-0" :class="{
-          'bg-green-700': index < activeStepIndex,
-          'bg-white': index >= activeStepIndex,
+          'bg-green-700': index <= activeStepIndex,
+          'bg-white': index > activeStepIndex,
           'bg-image-2': index === 0 && index < activeStepIndex,
           'bg-image-3': index === 1 && index < activeStepIndex,
           'bg-image-4': index === 2 && index < activeStepIndex,
@@ -68,24 +67,6 @@ export default {
   width: 100%;
   height: 100vh;
   background-image: url('@/assets/img/bg.png');
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-image-2 {
-  background-image: url('@/assets/img/bg2.png');
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-image-3 {
-  background-image: url('@/assets/img/bg3.png');
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-image-4 {
-  background-image: url('@/assets/img/bg4.png');
   background-size: cover;
   background-position: center;
 }
