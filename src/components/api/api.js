@@ -1,4 +1,4 @@
-const apiUrl = 'http://164.92.99.180:8001';
+const apiUrl = 'https://sharifjon.uz';
 
 const apiClient = async (endpoint, options = {}) => {
   const url = `${apiUrl}${endpoint}`;
