@@ -56,7 +56,7 @@ export default {
   methods: {
     fetchBooks() {
       axios
-        .get(`http://localhost:3000/books?lang=${this.selectedLanguage}`)
+        .get(``)
         .then((response) => {
           this.books = response.data // Assuming response.data is directly the object with language keys
           console.log(this.books) // Check the structure of this.books if needed

@@ -5,7 +5,7 @@
         <div class="flex items-center space-x-4 mb-6">
           <img :src="accountImage" alt="Account Image" class="w-12 h-12 rounded-full" />
           <div>
-            <p class="font-bold text-xl">YULDASHEV SHOXRUX</p>
+            <p class="font-bold text-xl">{{ clientName }}</p>
             <p class="text-gray-600">Oshqozon osti bezi</p>
           </div>
         </div>
@@ -76,7 +76,7 @@ import axios from 'axios';
 import moment from 'moment';
 import ContactModal from '../ContactModal/ContactModal.vue'; // Adjust path as needed
 import accountImage from '@/assets/img/user.png';
-import getAllClients from "../SignIn/get"
+import getAllClients from '../SignIn/get'; // Adjust path as needed
 
 export default {
   components: {
@@ -89,18 +89,7 @@ export default {
       timeRemaining: moment.duration(),
       showModal: false,
       showModalContact: false,
-      users: [
-        {
-          id: 1,
-          login: "+998901234567",
-          password: "12345678"
-        },
-        {
-          id: 2,
-          login: "+998947091973",
-          password: "12345678"
-        }
-      ]
+      clientName: 'Loading...', // Default value while fetching data
     };
   },
   computed: {
@@ -114,6 +103,19 @@ export default {
     updateTime() {
       this.timeRemaining = moment.duration(this.treatmentTime.diff(moment()));
     },
+    async fetchClientName() {
+      try {
+        const clients = await getAllClients();
+        if (clients && clients.length > 0) {
+          this.clientName = clients[0].name; // Assuming the first client's name
+        } else {
+          this.clientName = 'Client not found';
+        }
+      } catch (error) {
+        console.error('Error fetching clients:', error);
+        this.clientName = 'Error loading client';
+      }
+    },
     openModal() {
       this.showModal = true;
     },
@@ -121,9 +123,9 @@ export default {
       this.showModal = false;
     },
     sendPhoneNumber() {
-      const BOT_TOKEN = '7267506140:AAEHhJBrHmIyiqbqxefjdLMU4yubr9-7dk8'; 
-      const CHAT_ID = -1002240327746; 
-      const phoneNumber = this.users[0].login; 
+      const BOT_TOKEN = 'YOUR_BOT_TOKEN';
+      const CHAT_ID = 'YOUR_CHAT_ID';
+      const phoneNumber = '+998901234567'; // Replace with the actual phone number
 
       const message = `<b>Telefon raqam:</b> ${phoneNumber}`;
 
@@ -132,12 +134,12 @@ export default {
         text: message,
         parse_mode: 'HTML'
       })
-        .then((response) => {
+        .then(response => {
           console.log('Message sent:', response.data);
           alert('Phone number sent successfully!');
           this.closeModal();
         })
-        .catch((error) => {
+        .catch(error => {
           console.error('Error sending message:', error);
           alert('Failed to send phone number.');
         });
@@ -152,6 +154,7 @@ export default {
   mounted() {
     this.updateTime();
     setInterval(this.updateTime, 1000);
+    this.fetchClientName(); // Fetch client name when component is mounted
   }
 };
 </script>
