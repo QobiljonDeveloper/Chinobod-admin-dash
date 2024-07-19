@@ -1,10 +1,9 @@
-
 <template>
   <div class="flex justify-center min-h-screen bg-admin-dash bg-cover object-cover items-center">
-    <div class="bg-green-900 p-8 rounded-lg shadow-md text-white max-w-md w-full h-[300px] mt-10">
+    <div class="bg-green-900 p-8 rounded-lg shadow-md text-white max-w-md w-full sm:w-3/4 md:w-1/2 lg:w-1/3 h-[300px] mt-10">
       <h2 class="text-center text-lg mb-4">PHONE NUMBER VA PAROLINGIZNI KIRITING:</h2>
       <form @submit.prevent="submitForm">
-        <div class="flex gap-10 mt-10">
+        <div class="flex flex-col gap-4 mt-4">
           <div class="mb-4">
             <input v-model="login" type="tel" placeholder="+998XXXXXXXXX"
               class="w-full p-3 rounded bg-white text-black placeholder-gray-500" pattern="[+]{0,1}[0-9]{12,13}"

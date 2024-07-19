@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-screen bg-cover bg-admin-dash">
-    <div class="container mx-auto items-center mt-10 flex justify-between">
-      <div>
+    <div class="container mx-auto items-center mt-10 flex flex-col lg:flex-row justify-between">
+      <div class="w-full lg:w-1/2 space-y-6">
         <div class="flex items-center space-x-4 mb-6">
           <img :src="accountImage" alt="Account Image" class="w-12 h-12 rounded-full" />
           <div>
@@ -22,12 +22,8 @@
             <h2 class="text-xl mb-4">Ishonchingiz komilmi</h2>
             <p class="mb-4">Telefon raqamingizni Call center ga yuvoraylikmi ?</p>
             <div class="flex justify-end space-x-2">
-              <button class="bg-red-500 text-white px-4 py-2 rounded" @click="closeModal">
-                No
-              </button>
-              <button class="bg-green-500 text-white px-4 py-2 rounded" @click="sendPhoneNumber">
-                Yes
-              </button>
+              <button class="bg-red-500 text-white px-4 py-2 rounded" @click="closeModal">No</button>
+              <button class="bg-green-500 text-white px-4 py-2 rounded" @click="sendPhoneNumber">Yes</button>
             </div>
           </div>
         </div>
@@ -52,13 +48,11 @@
           <button @click="openModalContact" class="text-left px-6 py-2 bg-[#022511] text-white max-w-xs rounded-lg">
             Kontakt
           </button>
-          <router-link to="/Book" class="text-left px-6 py-2 bg-[#022511] text-white max-w-xs rounded-lg">
-            Elektron kutubxona
-          </router-link>
+          <a href="https://mykitob.uz/" class="text-left px-6 py-2 bg-[#022511] text-white max-w-xs rounded-lg">Elektron kutubxona</a>
         </div>
       </div>
 
-      <div>
+      <div class="w-full lg:w-1/3 mt-6 lg:mt-0">
         <div class="countdown text-center mb-4 bg-[#022511] p-4 rounded-lg">
           <p class="text-white">Muolaja boshlanishiga qoldi:</p>
           <h2 class="text-2xl font-semibold text-white">{{ formattedTime }}</h2>
